@@ -1,3 +1,4 @@
+// As express application
 const express = require('express');
 const https = require('https');
 const fs = require('fs');
@@ -38,19 +39,6 @@ app.get("/", async (req, res) => {
             fs.mkdirSync(dest, { recursive: true })
             console.log('Directory created: ', dest)
         }
-
-        // fs.access(dest, function(err){ // checks if directory exists
-        //     if(err){
-        //         console.log('folder doesnt exist')
-        //         fs.mkdir(dest, function(){ // create directory
-        //             if(err) {
-        //                 return err
-        //             }
-        //             console.log('Directory created: ', dest)
-        //         })
-        //     }
-        //     console.log('Directory exists: ', dest)
-        // })
 
         count++
         let destPath = ''
