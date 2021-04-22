@@ -1,0 +1,24 @@
+{
+  "name": "node-assignments",
+  "version": "1.0.0",
+  "description": "Nodejs assignments",
+  "main": "index.js",
+  "dependencies": {
+    "assert": "2.0.0",
+    "axios": "0.21.1",
+    "bitly": "7.1.2",
+    "csv-writer": "1.6.0",
+    "express": "4.17.1",
+    "request": "2.88.2",
+    "xml-parser": "1.2.1"
+  },
+  "devDependencies": {
+    "chai": "4.3.4",
+    "sinon": "10.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mayank K",
+  "license": "ISC"
+}
