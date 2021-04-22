@@ -5,6 +5,9 @@ const fs = require('fs');
 let count = 0;
 let folderCount = 1;
 let destinationRoot = './Download/dl_'
+const chai = require('chai');
+const expect = chai.expect;
+const assert = require('assert')
 
 const downloadImages = function () {
     let urlArray = [
@@ -30,7 +33,10 @@ const downloadImages = function () {
         }
 
         // Checking if directory exists otherwise creating it
-        if (!fs.existsSync(dest)) {
+        let dirExists = fs.existsSync(dest)
+        if (!dirExists) {
+            expect(dirExists).to.be.false;
+            assert.strictEqual(dirExists, false, "Directory should be created only if it does not exists");
             fs.mkdirSync(dest, { recursive: true })
             console.log('Directory created: ', dest)
         }
@@ -48,6 +54,7 @@ const downloadImages = function () {
             //console.log('Image name: ', imageName);
 
             file.on('finish', function () {
+                expect(file).to.have.deep.property("path").that.contains('./Download/dl_');
                 console.log('Download is complete for file: ', imageName);
                 file.close();
             });

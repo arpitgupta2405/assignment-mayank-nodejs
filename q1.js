@@ -1,6 +1,7 @@
 const fs = require('fs');
 const parse = require('xml-parser');
-
+const chai = require('chai');
+const expect = chai.expect;
 
 const parseXML = function (path) {
   fs.access(path, fs.constants.F_OK, (err) => {
@@ -16,6 +17,9 @@ const parseXML = function (path) {
         // Printing entire object
         let inspect = require('util').inspect;
         console.log(inspect(obj, { colors: true, depth: Infinity }));
+
+        // Verifying output to be 
+        expect(inspect(obj, { colors: true, depth: Infinity })).to.be.a('string').that.contains('soapenv:Envelope');
       });
       
     }

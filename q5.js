@@ -4,6 +4,9 @@ const bitlyToken = "503aa3708ea9902670ed50e8c06002e0495551ae"
 const BitlyClient = require('bitly').BitlyClient;
 const bitly = new BitlyClient(bitlyToken);
 
+const chai = require('chai');
+const expect = chai.expect;
+
 let urlArray = [
   "https://doodleart.redbull.com/assets/managed/entries/processed/sm/367010617181759_36211000.jpg",
   "https://images.pexels.com/photos/1519753/pexels-photo-1519753.jpeg",
@@ -23,9 +26,12 @@ async function shortenURLs(urlArray) {
     response = await bitly.shorten(urlArray[i]);
     rowObj['original'] = urlArray[i]
     rowObj['shorten'] = response.link
+    expect(response.link.length).to.be.greaterThan(0);
     data.push(rowObj)
     console.log(`Your shortened bitlink is ${response.link}`);
   }
+  expect(data.length).to.equal(8);
+
   writeCSV(data)
 }
 
